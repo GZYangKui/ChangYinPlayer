@@ -1,0 +1,21 @@
+.top-action {
+    -fx-background-color: #524551;
+}
+
+.top-action HBox {
+    -fx-padding: 10px 20px;
+}
+
+#searchAction {
+    -fx-min-width: 100px;
+    -fx-background-color: #3385ff;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-view{
+    -fx-border-width: 0;
+}
+
+.radio-box .jfx-radio-button {
+    -fx-padding: 5px;
+}

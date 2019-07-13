@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.TableView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import java.net.URL?>
+<?import org.controlsfx.control.MaskerPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Label?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:id="container">
+    <stylesheets>
+        <URL value="@/css/search.css"/>
+    </stylesheets>
+    <top>
+        <VBox styleClass="top-action" fx:id="topBox">
+            <HBox alignment="CENTER">
+                <JFXTextField fx:id="searchBox"/>
+                <JFXButton text="搜索" fx:id="searchAction"/>
+            </HBox>
+            <HBox alignment="CENTER" styleClass="radio-box">
+                <JFXRadioButton text="网易云" userData="netease" fx:id="netease" selected="true">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="searchGroup"/>
+                    </toggleGroup>
+                </JFXRadioButton>
+                <JFXRadioButton text="QQ" toggleGroup="$searchGroup" userData="tencent"/>
+                <JFXRadioButton text="酷狗" toggleGroup="$searchGroup" userData="kugou"/>
+                <JFXRadioButton text="百度" toggleGroup="$searchGroup" userData="baidu"/>
+                <JFXRadioButton text="虾米" toggleGroup="$searchGroup"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="playingList">
+            <placeholder>
+                <Label text="注意：qq音乐及百度音乐部分音乐暂时无法使用" style="-fx-text-fill: red"/>
+            </placeholder>
+            <columns>
+                <TableColumn text="歌曲"/>
+                <TableColumn text="歌手"/>
+                <TableColumn text="专辑"/>
+                <TableColumn text="操作"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

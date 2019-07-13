@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import org.controlsfx.control.MaskerPane?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            styleClass="container"
+            fx:id="container">
+    <stylesheets>
+        <URL value="@/css/main_content.css"/>
+    </stylesheets>
+    <center>
+        <TabPane fx:id="tabPane">
+            <tabs>
+                <Tab text="正在播放" closable="false">
+                    <content>
+                        <TableView fx:id="playingList" editable="false">
+                            <placeholder>
+                                <MaskerPane text="加载歌曲列表中"/>
+                            </placeholder>
+                            <columns>
+                                <TableColumn text="歌曲"/>
+                                <TableColumn text="歌手"/>
+                                <TableColumn text="专辑"/>
+                                <TableColumn text="操作"/>
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+                <Tab text="播放列表" closable="false"/>
+                <Tab text="歌曲搜索" closable="false"/>
+                <Tab text="播放历史" closable="false"/>
+            </tabs>
+        </TabPane>
+    </center>
+    <right>
+        <VBox fx:id="rightInfo" alignment="TOP_CENTER">
+            <StackPane fx:id="picInfo" alignment="CENTER" styleClass="playingInfo">
+                <ImageView>
+                    <Image url="@/images/album_cover_player.png"/>
+                </ImageView>
+                <ImageView fx:id="albumPic">
+                    <Image url="@/images/player_cover.png" requestedWidth="180" requestedHeight="200" smooth="true"/>
+                </ImageView>
+            </StackPane>
+            <JFXListView fx:id="lyricList"/>
+        </VBox>
+    </right>
+
+</BorderPane>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.ButtonBar?>
+
+<?import javafx.scene.control.Button?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXSlider?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.navigation.controller.MainController"
+            prefWidth="1000"
+            prefHeight="600"
+            fx:id="container">
+    <stylesheets>
+        <URL value="@/css/main_view.css"/>
+    </stylesheets>
+    <top>
+        <HBox styleClass="top-action" alignment="CENTER_LEFT" fx:id="topActionBox">
+            <padding>
+                <Insets>
+                    <top>5</top>
+                    <left>5</left>
+                    <right>5</right>
+                    <bottom>5</bottom>
+                </Insets>
+            </padding>
+            <HBox HBox.hgrow="ALWAYS" fx:id="topActionBox1" alignment="CENTER_LEFT">
+                <HBox alignment="CENTER_LEFT">
+                    <ImageView>
+                        <Image url="@/images/icon.png" requestedHeight="20" requestedWidth="20" smooth="true"/>
+                    </ImageView>
+                    <Label text="畅音播放器" styleClass="app-title"/>
+                </HBox>
+                <ButtonBar buttonMinWidth="10" styleClass="router-action">
+                    <buttons>
+                        <Button>
+                            <tooltip>
+                                <Tooltip text="后退"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/back.png" requestedHeight="15" requestedWidth="15"
+                                           smooth="true"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button>
+                            <tooltip>
+                                <Tooltip text="前进"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/forward.png" requestedHeight="15" requestedWidth="15"
+                                           smooth="true"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </buttons>
+                </ButtonBar>
+            </HBox>
+
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" fx:id="topActionBox2">
+                <ButtonBar buttonMinWidth="20">
+                    <buttons>
+                        <Button cancelButton="true">
+                            <tooltip>
+                                <Tooltip text="更换皮肤"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/skin.png" requestedWidth="20" requestedHeight="20"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button>
+                            <tooltip>
+                                <Tooltip text="意见反馈"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/feedback.png" requestedWidth="20" requestedHeight="20"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button>
+                            <tooltip>
+                                <Tooltip text="设置"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/setting.png" requestedWidth="20" requestedHeight="20"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </buttons>
+                </ButtonBar>
+
+                <ButtonBar buttonMinWidth="20">
+                    <buttons>
+                        <Button onAction="#minimize">
+                            <tooltip>
+                                <Tooltip text="最小化"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/minimize.png" requestedWidth="20" requestedHeight="20"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button onAction="#maximization">
+                            <tooltip>
+                                <Tooltip text="最大化"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/ｍaximization.png" requestedWidth="20"
+                                           requestedHeight="20"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="exit">
+                            <tooltip>
+                                <Tooltip text="关闭"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/close.png" requestedWidth="20" requestedHeight="20"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </buttons>
+                </ButtonBar>
+            </HBox>
+        </HBox>
+    </top>
+    <center>
+        <VBox styleClass="center-box" fx:id="content">
+
+        </VBox>
+    </center>
+    <bottom>
+        <HBox styleClass="bottom-box" fx:id="bottomBox">
+            <HBox fx:id="bottomBox1">
+                <ButtonBar buttonMinWidth="20">
+                    <buttons>
+                        <Button fx:id="lastSong">
+                            <tooltip>
+                                <Tooltip text="上一曲"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/past.png" requestedWidth="25" requestedHeight="25"
+                                           smooth="true"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="play" userData="false">
+                            <tooltip>
+                                <Tooltip text="播放"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/pause.png" requestedWidth="25" requestedHeight="25"
+                                           smooth="true"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="nextSong">
+                            <tooltip>
+                                <Tooltip text="下一曲"/>
+                            </tooltip>
+                            <graphic>
+                                <ImageView>
+                                    <Image url="@/images/next.png" requestedWidth="25" requestedHeight="25"
+                                           smooth="true"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </buttons>
+                </ButtonBar>
+            </HBox>
+            <HBox alignment="CENTER" fx:id="bottomBox2">
+                <Label text="00:00" fx:id="startTime"/>
+                <JFXSlider fx:id="progress" value="0"/>
+                <Label fx:id="endTime"/>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" fx:id="bottomBox3">
+                <Label>
+                    <graphic>
+                        <ImageView>
+                            <Image smooth="true" url="@/images/volume.png" requestedHeight="25" requestedWidth="25"/>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <JFXSlider fx:id="volume" max="200" value="0"/>
+            </HBox>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,102 @@
+* {
+    -fx-text-fill: rgba(255, 255, 255, .8);
+}
+
+.tab-header-background, .tab, .column-header, .table-column, .filler {
+    -fx-background-color: #524551;
+}
+
+.tab {
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(150, 150, 150, .5);
+}
+
+.tab-label, .column-drag-header .label {
+    -fx-text-fill: #fff;
+    -fx-pref-width: 100px;
+    -fx-text-alignment: center;
+}
+
+.tab:hover {
+    -fx-border-color: rgba(255, 255, 255, 1);
+}
+
+.container, .jfx-list-view {
+    -fx-background-color: #524551;
+}
+
+.track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius: 2em;
+}
+
+.decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+
+}
+
+.decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+
+}
+
+.thumb {
+    -fx-background-color: derive(black, 90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
+
+#rightInfo .playingInfo {
+    -fx-padding: 20px 10px;
+}
+
+
+.jfx-list-cell-container > .label {
+    -fx-text-fill: rgba(225, 225, 225, .8);;
+}
+
+.jfx-list-cell {
+    -fx-background-insets: 0.0;
+}
+
+.jfx-list-cell:odd, .jfx-list-cell:even {
+    -fx-background-color: #524551;
+}
+
+.jfx-list-cell:filled:hover {
+    -fx-text-fill: black;
+}
+
+.jfx-list-cell .jfx-rippler {
+    -jfx-rippler-fill: BLUE;
+}
+
+.jfx-list-view {
+    -fx-background-insets: 0;
+    -jfx-cell-horizontal-margin: 0.0;
+    -jfx-cell-vertical-margin: 5.0;
+    -jfx-vertical-gap: 10;
+    -jfx-expanded: false;
+    -fx-pref-width: 200;
+}
+.current_lyric {
+    -fx-background-color: linear-gradient(to right, #7A88FF, #7AFFAF);
+}
+
+.current_lyric .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 18px;
+}
+
+.search-pane {
+    -fx-background-color: #FFFFFF;
+}
+
+.search-pane HBox {
+    -fx-padding: 10px;
+}

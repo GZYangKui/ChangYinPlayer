@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.5'
+    id 'com.gluonhq.client-gradle-plugin' version '0.0.11'
+}
+
+group 'com.navigation'
+version '1.0-SNAPSHOT'
+
+mainClassName = 'com.navigation.Main'
+
+
+javafx {
+    version = "11.0.2"
+    modules = ['javafx.controls', 'javafx.graphics', 'javafx.fxml', 'javafx.base']
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.jfoenix', name: 'jfoenix', version: '9.0.8'
+    compile group: 'org.controlsfx', name: 'controlsfx', version: '11.0.0'
+    compile group: 'uk.co.caprica', name: 'vlcj', version: '4.1.0'
+    compile 'io.vertx:vertx-core:3.7.1'
+    compile 'org.codehaus.groovy:groovy:3.0.0-beta-1'
+    compile 'io.vertx:vertx-web-client:3.7.1'
+
+}
+
+sourceSets.main.java.srcDirs = []
+sourceSets.main.groovy.srcDirs += ["src/main/java"]
+
+jar {
+    manifest {
+        attributes('Main-Class': 'com.navigation.Main', "Implementation-Title": "Gradle")
+    }
+    
+    from {
+        //添加依懒到打包文件
+        //configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtime.collect { zipTree(it) }
+        
+    }
+}

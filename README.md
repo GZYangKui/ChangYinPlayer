@@ -11,3 +11,9 @@
 ## 启动项目
  gradlew run
  
+## 程序快照
+![avatar](https://github.com/GZYangKui/ChangYinPlayer/blob/master/snapshot/01.png) 
+
+![avatar](https://github.com/GZYangKui/ChangYinPlayer/blob/master/snapshot/02.png)
+
+![avatar](https://github.com/GZYangKui/ChangYinPlayer/blob/master/snapshot/03.png)

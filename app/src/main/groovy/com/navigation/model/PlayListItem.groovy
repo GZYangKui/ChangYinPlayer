@@ -2,7 +2,7 @@ package com.navigation.model
 
 import com.jfoenix.controls.JFXButton
 import com.navigation.base.BaseModel
-import com.navigation.views.MainContent
+import com.navigation.views.MainView
 import javafx.geometry.Pos
 import javafx.scene.control.Tooltip
 import javafx.scene.image.ImageView
@@ -26,11 +26,11 @@ class PlayListItem extends BaseModel {
 
     HBox actionBox = new HBox()
 
-    private MainContent context;
+    private MainView context;
     private final JFXButton play = new JFXButton()
     private final JFXButton download = new JFXButton()
 
-    PlayListItem(MainContent context) {
+    PlayListItem(MainView context) {
         actionBox.alignment = Pos.CENTER
         actionBox.getChildren().addAll(play, download)
         this.context = context

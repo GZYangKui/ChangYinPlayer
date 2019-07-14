@@ -1,7 +1,6 @@
 package com.navigation;
 
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,12 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import uk.co.caprica.vlcj.binding.LibVlc;
-import uk.co.caprica.vlcj.binding.RuntimeUtil;
+
 
 import java.util.Objects;
 
-import static uk.co.caprica.vlcj.binding.RuntimeUtil.*;
 
 public class Main extends Application {
 

@@ -2,7 +2,7 @@ package com.navigation.views
 
 
 import com.jfoenix.controls.JFXListView
-import com.navigation.base.BaseContent
+import com.navigation.base.BaseView
 import com.navigation.controller.MainController
 import com.navigation.enums.NotificationType
 import com.navigation.model.PlayListItem
@@ -12,7 +12,6 @@ import javafx.application.Platform
 import javafx.collections.FXCollections
 import javafx.geometry.Pos
 import javafx.scene.control.Label
-import javafx.scene.control.SingleSelectionModel
 import javafx.scene.control.TabPane
 import javafx.scene.control.TableColumn
 import javafx.scene.control.TableView
@@ -32,7 +31,7 @@ import static com.navigation.utils.Message.showNotification
 import static com.navigation.utils.ResourceBundle.loadImageResource
 import static com.navigation.config.Constant.*
 
-class MainContent extends BaseContent {
+class MainView extends BaseView {
     private TabPane tabPane
     private VBox rightInfo
     private TableView<PlayListItem> playingList
@@ -46,13 +45,13 @@ class MainContent extends BaseContent {
     private static final String EVENT_ADDRESS = "media_player"
     //记录当前歌曲位置 便于做曲目切换控制
     private int currentIndex;
-    private SearchComponent search
-    private PlayListComponent playList
+    private SearchView search
+    private PlayListView playList
 
-    MainContent(MainController context) {
+    MainView(MainController context) {
         super(context, "fxml/main_content_view.fxml")
-        search = new SearchComponent(context)
-        playList = new PlayListComponent(context)
+        search = new SearchView(context)
+        playList = new PlayListView(context)
         initView()
     }
     //初始化视图内容
@@ -74,7 +73,7 @@ class MainContent extends BaseContent {
         playingList.columns.eachWithIndex { TableColumn entry, int i ->
             if (i === 0) {
                 song = entry
-                song.prefWidthProperty().bind(playingList.widthProperty() * 0.377)
+                song.prefWidthProperty().bind(playingList.widthProperty() * 0.394)
             } else if (i === 1) {
                 singer = entry
                 singer.prefWidthProperty().bind(playingList.widthProperty() * 0.2)

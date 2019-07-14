@@ -8,11 +8,11 @@ import javafx.scene.layout.BorderPane
 
 import static com.navigation.utils.Message.showError
 
-class BaseContent {
+class BaseView {
     protected final MainController context
     private final BorderPane container
 
-    BaseContent(MainController context, String viewPath) {
+    BaseView(MainController context, String viewPath) {
         this.context = context
         final Parent root = FXMLLoader.load(ClassLoader.getSystemResource(viewPath))
         container = root.lookup("#container") as BorderPane

@@ -16,7 +16,7 @@
             prefHeight="400.0" prefWidth="600.0"
             fx:id="container">
     <stylesheets>
-        <URL value="@/css/search.css"/>
+        <URL value="@/css/search_view.css"/>
     </stylesheets>
     <top>
         <VBox styleClass="top-action" fx:id="topBox">
@@ -40,7 +40,7 @@
     <center>
         <TableView fx:id="playingList">
             <placeholder>
-                <Label text="注意：qq音乐及百度音乐部分音乐暂时无法使用" style="-fx-text-fill: red"/>
+                <Label text="注意：qq音乐及百度音乐部分音乐暂时无法使用" style="-fx-font-size: 18px"/>
             </placeholder>
             <columns>
                 <TableColumn text="歌曲"/>

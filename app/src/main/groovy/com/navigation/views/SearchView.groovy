@@ -3,7 +3,7 @@ package com.navigation.views
 import com.jfoenix.controls.JFXButton
 import com.jfoenix.controls.JFXRadioButton
 import com.jfoenix.controls.JFXTextField
-import com.navigation.base.BaseContent
+import com.navigation.base.BaseView
 import com.navigation.controller.MainController
 import com.navigation.enums.NotificationType
 import com.navigation.model.PlayListItem
@@ -13,12 +13,20 @@ import com.navigation.utils.Message
 import io.vertx.core.Vertx
 import io.vertx.core.json.JsonObject
 import javafx.application.Platform
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import javafx.collections.FXCollections
+import javafx.event.Event
+import javafx.event.EventHandler
+import javafx.event.EventType
 import javafx.geometry.Pos
+import javafx.scene.control.ScrollBar
+import javafx.scene.control.ScrollToEvent
 import javafx.scene.control.TableColumn
 import javafx.scene.control.TableView
 import javafx.scene.control.ToggleGroup
 import javafx.scene.control.cell.PropertyValueFactory
+import javafx.scene.input.ScrollEvent
 import javafx.scene.layout.VBox
 
 import static com.navigation.config.Constant.ACTION
@@ -32,11 +40,11 @@ import static com.navigation.service.HttpService.get
  * 搜索结果展示面板
  *
  */
-class SearchComponent extends BaseContent {
+class SearchView extends BaseView {
     private JFXTextField searchBox
     private JFXButton searchAction
     private ToggleGroup searchGroup
-    private SearchModel searchParam = new SearchModel()
+    private SearchModel searchParam
     private javafx.collections.ObservableList<SearchListItem> list = FXCollections.observableArrayList()
     private TableView<PlayListItem> playingList
     private TableColumn song
@@ -45,7 +53,7 @@ class SearchComponent extends BaseContent {
     private TableColumn action
     private Vertx vertx
 
-    SearchComponent(MainController context) {
+    SearchView(MainController context) {
         super(context, "fxml/search_view.fxml")
         initView()
         vertx = context.vertx
@@ -62,7 +70,7 @@ class SearchComponent extends BaseContent {
         playingList.columns.eachWithIndex { TableColumn entry, int i ->
             if (i === 0) {
                 song = entry
-                song.prefWidthProperty().bind(playingList.widthProperty() * 0.377)
+                song.prefWidthProperty().bind(playingList.widthProperty() * 0.394)
             } else if (i === 1) {
                 singer = entry
                 singer.prefWidthProperty().bind(playingList.widthProperty() * 0.2)
@@ -90,6 +98,7 @@ class SearchComponent extends BaseContent {
                 return
             }
             list.clear()
+            searchParam = new SearchModel()
             searchParam.name = searchBox.text
             searchParam.source = selected.userData
             search()
@@ -97,16 +106,41 @@ class SearchComponent extends BaseContent {
         playingList.setSortPolicy {
             return null
         }
+        playingList.setOnMouseEntered() {
+            if (playingList.userData == null) {
+                playingList.userData = true
+                final ScrollBar _scrollBar = playingList.lookup(".scroll-bar:vertical")
+                _scrollBar.valueProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                        if (newValue.doubleValue() >= _scrollBar.getMax()*0.8) {
+                            search()
+                        }
+                    }
+                })
+            }
+        }
+
     }
 
     private search() {
+        if (searchParam.isEmpty) {
+            return
+        }
         def url = "http://www.gequdaquan.net/gqss/api.php"
         get(context.getVertx(), url, searchParam.toJson()).setHandler {
             if (!it.succeeded()) {
                 exception("搜索失败", it.cause())
                 return
             }
-            it.result().bodyAsJsonArray().forEach {
+            def data = it.result().bodyAsJsonArray()
+            if (data.size() == 0) {
+                searchParam = true
+                return
+            }
+            searchParam.page++
+
+            data.forEach {
                 def obj = it as JsonObject
                 def item = new SearchListItem(this)
                 item.song = obj.getString("name")
@@ -145,4 +179,5 @@ class SearchComponent extends BaseContent {
     private def formatTransform(JsonObject obj, String field) {
         return obj.getValue(field).toString()
     }
+
 }

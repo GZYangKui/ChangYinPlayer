@@ -1,7 +1,7 @@
 package com.navigation.views
 
 import com.jfoenix.controls.JFXMasonryPane
-import com.navigation.base.BaseContent
+import com.navigation.base.BaseView
 import com.navigation.component.PlayListItem
 import com.navigation.controller.MainController
 import io.vertx.core.json.JsonObject
@@ -11,13 +11,13 @@ import static com.navigation.config.Constant.*
 
 import static com.navigation.service.HttpService.getCategoryList
 
-class PlayListComponent extends BaseContent {
-    private MainContent content
+class PlayListView extends BaseView {
+    private MainView content
     private JFXMasonryPane masonryPane
     private List<JsonObject> list = new ArrayList<>()
     private boolean isInitList = false
 
-    PlayListComponent(MainController context) {
+    PlayListView(MainController context) {
         super(context, "fxml/play_list_view.fxml")
         initView()
     }

@@ -12,4 +12,6 @@ class SearchModel extends BaseModel {
     String name
     //每页数据
     long count = 20
+    //数据是否为空
+    boolean isEmpty = false
 }

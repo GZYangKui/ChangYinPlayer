@@ -1,50 +1,101 @@
-.root {
-    -fx-background-color: #FAFAFA;
+.tab-header-background, .tab, .column-header, .table-column, .filler, .table-view .placeholder {
+    -fx-background-color: #524551;
 }
 
-.table-column{
-    -fx-alignment: center;
+.table-view .scroll-bar:vertical,.jfx-list-view .scroll-bar:vertical {
+    -fx-pref-width: 5px;
+    -fx-background-color: #524551;
+}
+.table-view .scroll-bar:horizontal {
+    -fx-pref-height: 1px;
+    -fx-background-color: #524551;
 }
 
-.top-action {
-    -fx-background-color: #C72E2E;
-    -fx-pref-width: 50px;
-}
-
-.top-action ButtonBar Button {
-    -fx-pref-width: 25;
-    -fx-pref-height: 25;
-    -fx-background-color: #C72E2E;
-}
-
-.router-action {
-    -fx-padding: 0 10px 0 0;
-}
-
-.router-action Button {
-    -fx-pref-width: 40px;
-    -fx-pref-height: 18px;
-    -fx-border-color: #A92727;
+.tab {
     -fx-border-width: 1px;
+    -fx-border-color: rgba(150, 150, 150, .5);
 }
 
-.app-title {
-    -fx-font-size: 18px;
+.tab-label, .column-drag-header .label {
+    -fx-text-fill: #fff;
+    -fx-pref-width: 100px;
+    -fx-text-alignment: center;
+}
+
+.tab:hover {
+    -fx-border-color: rgba(255, 255, 255, 1);
+}
+
+.container, .jfx-list-view {
+    -fx-background-color: #524551;
+}
+
+.track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius: 2em;
+}
+
+.decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+
+}
+
+.decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+
+}
+
+#rightInfo .playingInfo {
+    -fx-padding: 20px 10px;
+}
+
+
+.jfx-list-cell-container > .label {
+    -fx-text-fill: rgba(225, 225, 225, .8);;
+}
+
+.jfx-list-cell {
+    -fx-background-insets: 0.0;
+}
+
+.jfx-list-cell:odd, .jfx-list-cell:even {
+    -fx-background-color: #524551;
+}
+
+.jfx-list-cell:filled:hover {
+    -fx-text-fill: black;
+}
+
+.jfx-list-cell .jfx-rippler {
+    -jfx-rippler-fill: BLUE;
+}
+
+.jfx-list-view {
+    -fx-background-insets: 0;
+    -jfx-cell-horizontal-margin: 0.0;
+    -jfx-cell-vertical-margin: 5.0;
+    -jfx-vertical-gap: 10;
+    -jfx-expanded: false;
+    -fx-pref-width: 200;
+}
+
+.current_lyric {
+    -fx-background-color: linear-gradient(to right, #7A88FF, #7AFFAF);
+}
+
+.current_lyric .label {
     -fx-text-fill: #FFFFFF;
-    -fx-font-weight: bold;
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 0, 0, 0, 1);
-    -fx-font-family: 'Tahoma';
+    -fx-font-size: 18px;
 }
 
-.bottom-box {
-    -fx-background-color: #524551;
-    -fx-padding: 5px;
+.search-pane {
+    -fx-background-color: #FFFFFF;
 }
 
-.bottom-box Button {
-    -fx-background-color: #524551;
-}
-
-.thumb, .track {
-    -fx-background-color: #C72E2E;
+.search-pane HBox {
+    -fx-padding: 10px;
 }

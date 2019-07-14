@@ -17,7 +17,7 @@
             styleClass="container"
             fx:id="container">
     <stylesheets>
-        <URL value="@/css/main_content.css"/>
+        <URL value="@/css/main_view.css"/>
     </stylesheets>
     <center>
         <TabPane fx:id="tabPane">

@@ -2,8 +2,8 @@ package com.navigation.controller;
 
 
 import com.jfoenix.controls.JFXSlider;
-import com.navigation.base.BaseContent;
-import com.navigation.views.MainContent;
+import com.navigation.base.BaseView;
+import com.navigation.views.MainView;
 import com.navigation.enums.NotificationType;
 import com.navigation.events.MediaEvent;
 import com.navigation.listener.DragListener;
@@ -86,7 +86,7 @@ public class MainController implements Initializable {
     private final EmbeddedMediaPlayer mediaPlayer;
 
     //页面内容面板路由
-    private final Stack<BaseContent> router = new Stack<>();
+    private final Stack<BaseView> router = new Stack<>();
 
     public MainController() {
         mediaPlayerFactory = new MediaPlayerFactory();
@@ -108,7 +108,7 @@ public class MainController implements Initializable {
         bottomBox3.prefWidthProperty().bind(bottomBox.widthProperty().multiply(0.2));
         progress.prefWidthProperty().bind(bottomBox2.widthProperty().multiply(0.85));
         volume.prefWidthProperty().bind(bottomBox3.widthProperty().multiply(0.8));
-        flushContent(new MainContent(this));
+        flushContent(new MainView(this));
 
         //监听音量改变
         volume.valueProperty().addListener((obs, newValue, oldValue) -> {
@@ -139,8 +139,8 @@ public class MainController implements Initializable {
                 mediaPlayer.controls().play();
             }
         });
-        lastSong.setOnAction(e -> ((MainContent) router.get(0)).control(-1));
-        nextSong.setOnAction(e -> ((MainContent) router.get(0)).control(1));
+        lastSong.setOnAction(e -> ((MainView) router.get(0)).control(-1));
+        nextSong.setOnAction(e -> ((MainView) router.get(0)).control(1));
         topActionBox.setOnMouseEntered(e -> {
             if (topActionBox.getUserData() == null) {
                 new DragListener((Stage) container.getScene().getWindow()).enableDrag(topActionBox);
@@ -150,7 +150,7 @@ public class MainController implements Initializable {
     }
 
     //更换内容面板
-    private void flushContent(BaseContent content) {
+    private void flushContent(BaseView content) {
 
         var list = this.content.getChildren();
 
@@ -204,7 +204,7 @@ public class MainController implements Initializable {
                 this.progress.setValue(current);
                 startTime.setText(progress);
             });
-            ((MainContent) router.get(0)).updateProgress(Long.parseLong(progress.split(":")[0]) * 60 + Long.parseLong(progress.split(":")[1]));
+            ((MainView) router.get(0)).updateProgress(Long.parseLong(progress.split(":")[0]) * 60 + Long.parseLong(progress.split(":")[1]));
         }
 
     }

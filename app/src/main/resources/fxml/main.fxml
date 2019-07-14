@@ -21,7 +21,7 @@
             prefHeight="600"
             fx:id="container">
     <stylesheets>
-        <URL value="@/css/main_view.css"/>
+        <URL value="@/css/app_view.css"/>
     </stylesheets>
     <top>
         <HBox styleClass="top-action" alignment="CENTER_LEFT" fx:id="topActionBox">

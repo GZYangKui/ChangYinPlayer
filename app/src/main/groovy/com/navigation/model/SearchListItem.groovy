@@ -2,7 +2,7 @@ package com.navigation.model
 
 import com.jfoenix.controls.JFXButton
 import com.navigation.base.BaseModel
-import com.navigation.views.SearchComponent
+import com.navigation.views.SearchView
 import io.vertx.core.json.JsonObject
 import javafx.geometry.Pos
 import javafx.scene.control.Tooltip
@@ -35,7 +35,7 @@ class SearchListItem extends BaseModel {
     private final JFXButton play = new JFXButton()
     private final JFXButton download = new JFXButton()
 
-    SearchListItem(SearchComponent context) {
+    SearchListItem(SearchView context) {
         actionBox.alignment = Pos.CENTER
         actionBox.getChildren().addAll(play, download)
         play.setTooltip(new Tooltip("点击播放"))

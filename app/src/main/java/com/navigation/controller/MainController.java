@@ -3,6 +3,7 @@ package com.navigation.controller;
 
 import com.jfoenix.controls.JFXSlider;
 import com.navigation.base.BaseView;
+import com.navigation.utils.DBUtils;
 import com.navigation.views.MainView;
 import com.navigation.enums.NotificationType;
 import com.navigation.events.MediaEvent;

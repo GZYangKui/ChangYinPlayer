@@ -12,7 +12,6 @@ class ResourceBundle {
      */
     static Image loadImageResource(String url, double width, double height, boolean smooth) {
         def image
-
         if (url.startsWith("https://") || url.startsWith("http://")) {
             image = new Image(url, width, height, false, true)
         } else {

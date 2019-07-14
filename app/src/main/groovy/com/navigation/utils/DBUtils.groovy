@@ -10,8 +10,8 @@ import io.vertx.ext.sql.SQLConnection
 class DBUtils {
     private static JDBCClient client
 
-    DBUtils(Vertx vertx, JsonObject config) {
-        client = JDBCClient.create(vertx, config)
+    static def init(Vertx vertx, JsonObject config) {
+        client = JDBCClient.createNonShared(vertx, config)
     }
     //执行查询
     static Future<List<JsonObject>> executeQuery(String sql, JDBCClient client) {

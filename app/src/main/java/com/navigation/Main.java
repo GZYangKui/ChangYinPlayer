@@ -1,6 +1,9 @@
 package com.navigation;
 
 
+import com.navigation.utils.DBUtils;
+import com.navigation.utils.Message;
+import io.vertx.core.Vertx;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +17,18 @@ import java.util.Objects;
 
 
 public class Main extends Application {
+
+    @Override
+    public void init() throws Exception {
+        final Vertx vertx = Vertx.vertx();
+        vertx.fileSystem().readFile("config/config.json", rs -> {
+            if (rs.succeeded()) {
+                DBUtils.init(vertx, rs.result().toJsonObject().getJsonObject("dataSource"));
+            } else {
+                Message.showError("加载配置文件失败", rs.cause());
+            }
+        });
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

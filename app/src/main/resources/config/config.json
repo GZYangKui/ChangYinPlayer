@@ -1,4 +1,8 @@
 {
+  "dataSource": {
+    "url": "jdbc:sqlite://db/changyin_player.db",
+    "driver_class": "org.sqlite.JDBC"
+  },
   "playList": [
     {
       "id": 3778678

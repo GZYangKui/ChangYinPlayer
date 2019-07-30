@@ -135,9 +135,10 @@ class SearchView extends BaseView {
             }
             def data = it.result().bodyAsJsonArray()
             if (data.size() == 0) {
-                searchParam = true
+                searchParam.isEmpty = true
                 return
             }
+
             searchParam.page++
 
             data.forEach {
